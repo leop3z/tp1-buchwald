@@ -20,15 +20,14 @@ const (
 	CIERRE_PARENTESIS = ")"
 )
 
-func LeerArchivo() []string {
+func LeerArchivo() string {
 	scanner := bufio.NewScanner(os.Stdin)
-	var expresiones []string
+	var exprecion string
 
 	for scanner.Scan() {
-		expresion := scanner.Text()
-		expresiones = append(expresiones, expresion)
+		exprecion = scanner.Text()
 	}
-	return expresiones
+	return exprecion
 }
 
 func esOperador(token string) bool {
