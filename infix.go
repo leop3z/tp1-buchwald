@@ -6,13 +6,7 @@ import (
 )
 
 func main() {
-	expresiones := conv.LeerArchivo()
-
-	for _, expresion := range expresiones {
-		postfija := conv.InfijaAPostfija(expresion)
-		for !postfija.EstaVacia() {
-			fmt.Print(postfija.Desencolar(), " ")
-		}
-		fmt.Println()
-	}
+	infija := conv.LeerArchivo()
+	postfija := conv.InfijaAPostfija(infija)
+	fmt.Println(postfija)
 }

@@ -30,6 +30,11 @@ func LeerArchivo() string {
 	return exprecion
 }
 
+func procesarLinea(linea string) string {
+	postfija := InfijaAPostfija(linea)
+	return postfija
+}
+
 func esOperador(token string) bool {
 	return token == SUMA || token == RESTA || token == MULTIPLICACION || token == DIVISION || token == POTENCIA
 }
@@ -71,7 +76,15 @@ func tokenizar(expresion string) []string {
 	return tokens
 }
 
-func InfijaAPostfija(expresion string) cola.Cola[string] {
+func mostrarPostfija(resultado cola.Cola[string]) string {
+	caracter := ""
+	for !resultado.EstaVacia() {
+		caracter += resultado.Desencolar()
+	}
+	return caracter
+}
+
+func InfijaAPostfija(expresion string) string {
 	salida := cola.CrearColaEnlazada[string]()
 	operadores := pila.CrearPilaDinamica[string]()
 	tokens := tokenizar(expresion)
@@ -79,7 +92,7 @@ func InfijaAPostfija(expresion string) cola.Cola[string] {
 		procesarToken(token, salida, operadores)
 	}
 	vaciarOperadores(salida, operadores)
-	return salida
+	return mostrarPostfija(salida)
 }
 
 func procesarToken(token string, salida cola.Cola[string], operadores pila.Pila[string]) {
