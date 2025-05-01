@@ -26,9 +26,7 @@ func LeerArchivo() []string {
 
 	for scanner.Scan() {
 		expresion := scanner.Text()
-		if expresion != "" {
-			expresiones = append(expresiones, expresion)
-		}
+		expresiones = append(expresiones, expresion)
 	}
 	return expresiones
 }
