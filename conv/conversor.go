@@ -18,24 +18,6 @@ const (
 	CIERRE_PARENTESIS = ")"
 )
 
-<<<<<<< HEAD
-func LeerArchivo() string {
-	scanner := bufio.NewScanner(os.Stdin)
-	var exprecion string
-
-	for scanner.Scan() {
-		exprecion = scanner.Text()
-	}
-	return exprecion
-}
-
-func procesarLinea(linea string) string {
-	postfija := InfijaAPostfija(linea)
-	return postfija
-}
-
-=======
->>>>>>> a8fd911 (lectura y procesamiento correcto de los archivos)
 func esOperador(token string) bool {
 	return token == SUMA || token == RESTA || token == MULTIPLICACION || token == DIVISION || token == POTENCIA
 }
@@ -77,21 +59,12 @@ func tokenizar(expresion string) []string {
 	return tokens
 }
 
-<<<<<<< HEAD
-func mostrarPostfija(resultado cola.Cola[string]) string {
-	caracter := ""
-	for !resultado.EstaVacia() {
-		caracter += resultado.Desencolar()
-	}
-	return caracter
-=======
 func mostrarExpresionPostfija(exprecion cola.Cola[string]) string {
 	var exprecionPostfija string
 	for !exprecion.EstaVacia() {
 		exprecionPostfija += exprecion.Desencolar() + " "
 	}
 	return exprecionPostfija
->>>>>>> a8fd911 (lectura y procesamiento correcto de los archivos)
 }
 
 func InfijaAPostfija(expresion string) string {
@@ -102,12 +75,8 @@ func InfijaAPostfija(expresion string) string {
 		procesarToken(token, salida, operadores)
 	}
 	vaciarOperadores(salida, operadores)
-<<<<<<< HEAD
-	return mostrarPostfija(salida)
-=======
 	resultado := mostrarExpresionPostfija(salida)
 	return resultado
->>>>>>> a8fd911 (lectura y procesamiento correcto de los archivos)
 }
 
 func procesarToken(token string, salida cola.Cola[string], operadores pila.Pila[string]) {
